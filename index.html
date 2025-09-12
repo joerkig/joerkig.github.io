@@ -4,9 +4,9 @@
         </div>
         <script>
             setInterval(() => {
-                document.querySelector('#clock').textContent = `${new Date().getHours()}:${new Date().getMinutes()}`
+                document.querySelector('#clock').textContent = `${new Date().getHours().toString().padStart(2,'0')}:${new Date().getMinutes().toString().padStart(2,'0')}:${new Date().getSeconds().toString().padStart(2,'0')}`
             }, 100);
-            document.querySelector('#clock').textContent = `${new Date().getHours()}:${new Date().getMinutes()}`
+            document.querySelector('#clock').textContent = `${new Date().getHours().toString().padStart(2,'0')}:${new Date().getMinutes().toString().padStart(2,'0')}:${new Date().getSeconds().toString().padStart(2,'0')}`
         </script>
     </body>
 </html>
