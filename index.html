@@ -2,6 +2,11 @@
     <body>
         <div id='clock'>
         </div>
-        <script>document.querySelector('#clock').textContent = `${new Date().getHours()}:${new Date().getMinutes()}`</script>
+        <script>
+            setInterval(() => {
+                document.querySelector('#clock').textContent = `${new Date().getHours()}:${new Date().getMinutes()}`
+            }, 100);
+            document.querySelector('#clock').textContent = `${new Date().getHours()}:${new Date().getMinutes()}`
+        </script>
     </body>
 </html>
