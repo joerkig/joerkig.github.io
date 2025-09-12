@@ -1,3 +1,7 @@
 <html><head><title>Test Application</title></head>
-    <body>Hello</body>
+    <body>
+        <div id='clock'>
+        </div>
+        <script>document.querySelector('#clock').textContent = `${new Date().getHours()}:${new Date().getMinutes()}`</script>
+    </body>
 </html>
