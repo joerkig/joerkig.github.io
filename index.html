@@ -8,66 +8,6 @@
         </details>
     </div>
     <script>
-        // Example button actions showcasing what can be done
-        const actions = [
-            {
-                name: "Paleto Bay",
-                action: {type: "setWaypoint", x: -267, y: 6231},
-            },
-            {
-                name: "Sandy Shores",
-                action: {type: "setWaypoint", x: 1601, y: 3662},
-            },
-            {
-                name: "Los Santos",
-                action: {type: "setWaypoint", x: 228, y: -878},
-            },
-            {
-                name: "Faction Menu",
-                action: {type: "sendCommand", command: "faction"},
-            },
-            {
-                name: "Open Trunk",
-                action: {type: "sendCommand", command: "rm_trunk"},
-            },
-            {
-                name: "Accept Trigger",
-                action: {type: "sendCommand", command: "userapp_trigger accept"},
-            },
-            {
-                name: "Get Cached Data",
-                action: {type: "getData"},
-            },
-            {
-                name: "Sample Notification",
-                action: {type: "notification", text: "Hello, World!"},
-            },
-            {
-                name: "Sample Popup",
-                action: {type: "popup", title: "Title", text: "Hello, World!"},
-            },
-            {
-                name: "Sample Oneliner",
-                action: {type: "oneliner", text: "Hello, World!"},
-            },
-            {
-                name: "Sample Message",
-                action: {type: "message", text: "Hello, World!"},
-            },
-            {
-                name: "Sample Info",
-                action: {type: "info", text: "Hello, World!", time: 10},
-            }
-        ];
-        for (const action of actions) {
-            const button = document.createElement("button");
-            button.textContent = action.name;
-            button.onclick = () => {
-                window.parent.postMessage(action.action, "*");
-            };
-            document.querySelector("#buttons").appendChild(button);
-        }
-
         // It is recommended to have a button to close the window
         // This is a simple example of how to do it
         const escapeListener = (e) => {
