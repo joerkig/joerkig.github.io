@@ -1,16 +1,72 @@
-<html><head><title>Clock</title></head>
-    <body>
-        <div id='clock' style='
-    font-family: fantasy;
-    font-size: large;
-    color: white;
-    -webkit-text-stroke-color: black;
-    -webkit-text-stroke-width: 0.5px;'>
-        </div>
-        <script>
-            setInterval(() => {
-                document.querySelector('#clock').textContent = new Date().toLocaleString()
-            }, 100);
-        </script>
-    </body>
+<html>
+<head>
+  <title>Clock</title>
+  <style>
+    body {
+      margin: 0;
+      height: 100vh;
+      background: #222;
+    }
+    #clock {
+      font-family: fantasy;
+      font-size: large;
+      color: white;
+      -webkit-text-stroke-color: black;
+      -webkit-text-stroke-width: 0.5px;
+      position: absolute;
+      cursor: move;
+      user-select: none;
+      padding: 5px;
+    }
+  </style>
+</head>
+<body>
+  <div id="clock"></div>
+
+  <script>
+    const clock = document.querySelector('#clock');
+
+    // Update clock text
+    setInterval(() => {
+      clock.textContent = new Date().toLocaleString();
+    }, 100);
+
+    // Load saved position
+    const savedX = localStorage.getItem('clockX');
+    const savedY = localStorage.getItem('clockY');
+    if (savedX !== null && savedY !== null) {
+      clock.style.left = savedX + 'px';
+      clock.style.top = savedY + 'px';
+    } else {
+      clock.style.left = '20px';
+      clock.style.top = '20px';
+    }
+
+    // Dragging logic
+    let isDragging = false;
+    let offsetX, offsetY;
+
+    clock.addEventListener('mousedown', (e) => {
+      isDragging = true;
+      offsetX = e.clientX - clock.offsetLeft;
+      offsetY = e.clientY - clock.offsetTop;
+    });
+
+    document.addEventListener('mousemove', (e) => {
+      if (isDragging) {
+        clock.style.left = e.clientX - offsetX + 'px';
+        clock.style.top = e.clientY - offsetY + 'px';
+      }
+    });
+
+    document.addEventListener('mouseup', () => {
+      if (isDragging) {
+        isDragging = false;
+        // Save position
+        localStorage.setItem('clockX', clock.offsetLeft);
+        localStorage.setItem('clockY', clock.offsetTop);
+      }
+    });
+  </script>
+</body>
 </html>
