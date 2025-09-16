@@ -30,12 +30,8 @@
         container.innerHTML = ""; // clear previous
 
         // Loop through inventory object
-        Object.entries(inventory).forEach(([name, item]) => {
-          const amount = item?.amount ?? "N/A"; // avoid undefined
-          const div = document.createElement("div");
-          div.className = "item";
-          div.innerHTML = `<span>${name}</span>: ${amount}`;
-          container.appendChild(div);
+        Object.entries(inventory).forEach((item) => {
+          console.log(item)
         });
       }
     });
