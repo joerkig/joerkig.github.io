@@ -5,6 +5,9 @@
 <body>
     <div id="data"></div>
   <script>
+    setInterval(() => {
+      window.parent.postMessage({type: "getData"}, "*");
+    }, 1000);
     window.parent.postMessage({type: "getData"}, "*");
     window.addEventListener("message", (event) => {
             const evt = event.data;
