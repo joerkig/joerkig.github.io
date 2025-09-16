@@ -1,1 +1,18 @@
-
+<html>
+<head>
+  <title>Test</title>
+</head>
+<body>
+    <div id="data"></div>
+  <script>
+    window.parent.postMessage({type: "getData"}, "*");
+    window.addEventListener("message", (event) => {
+            const evt = event.data;
+            // Display all data key/value pairs in a table
+            for (const key in evt.data)
+            {
+              console.log(evt.data[key]);
+            }});
+  </script>
+</body>
+</html>
