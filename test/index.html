@@ -3,12 +3,14 @@
   <title>Test</title>
 </head>
 <body>
-    <div id="data">Meow</div>
+    <div id="data"></div>
   <script>
     window.parent.postMessage({type: "getData"}, "*");
     window.addEventListener("message", (event) => {
             const evt = event.data;
-              console.log(evt.data);
+            // Display all data key/value pairs in a table
+
+              console.log(evt);
             });
   </script>
 </body>
