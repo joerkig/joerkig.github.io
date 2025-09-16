@@ -10,10 +10,7 @@
     }, 1000);
     window.parent.postMessage({type: "getData"}, "*");
     window.addEventListener("message", (event) => {
-            const evt = event.data;
-            // Display all data key/value pairs in a table
-
-              console.log(evt);
+              console.log(event);
             });
   </script>
 </body>
