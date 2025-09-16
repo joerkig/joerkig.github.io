@@ -5,13 +5,15 @@
 <body>
     <div id="data"></div>
   <script>
-    setInterval(() => {
-      window.parent.postMessage({type: "getData"}, "*");
-    }, 1000);
-    window.parent.postMessage({type: "getData"}, "*");
-    window.addEventListener("message", (event) => {
+        window.addEventListener("message", (event) => {
               console.log(event.data);
+              if (event.data.data.inventory) {
+                  console.log(event.data.data.inventory);
+              }
             });
+
+    window.parent.postMessage({type: "getData"}, "*");
+
   </script>
 </body>
 </html>
