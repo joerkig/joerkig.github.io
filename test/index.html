@@ -22,18 +22,20 @@
 
   <script>
     window.addEventListener("message", (event) => {
-      console.log(event.data);
+      console.log("Full event:", event.data);
 
-      if (event.data.data && event.data.data.inventory) {
-        const inventory = event.data.data.inventory;
+      const inventory = event.data.data.inventory;
+
+      if (inventory) {
         const container = document.getElementById("data");
         container.innerHTML = ""; // clear previous
 
         // Loop through inventory object
-        Object.entries(inventory).forEach(([name, info]) => {
+        Object.entries(inventory).forEach(([name, item]) => {
+          const amount = item?.amount ?? "N/A"; // avoid undefined
           const div = document.createElement("div");
           div.className = "item";
-          div.innerHTML = `<span>${name}</span>: ${info.amount}`;
+          div.innerHTML = `<span>${name}</span>: ${amount}`;
           container.appendChild(div);
         });
       }
