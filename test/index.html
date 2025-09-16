@@ -10,7 +10,7 @@
     }, 1000);
     window.parent.postMessage({type: "getData"}, "*");
     window.addEventListener("message", (event) => {
-              console.log(event);
+              console.log(event.data);
             });
   </script>
 </body>
