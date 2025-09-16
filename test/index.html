@@ -1,20 +1,46 @@
 <html>
 <head>
   <title>Test</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #111;
+      color: #eee;
+    }
+    .item {
+      padding: 5px 10px;
+      border-bottom: 1px solid #333;
+    }
+    .item span {
+      font-weight: bold;
+      color: #0f0;
+    }
+  </style>
 </head>
 <body>
-    <div id="data"></div>
+  <div id="data"></div>
+
   <script>
-        window.addEventListener("message", (event) => {
-              console.log(event.data);
-              if (event.data.data.inventory) {
-                  console.log(event.data.data.inventory);
-                  document.getElementById("data").innerText = JSON.stringify(event.data.data.inventory, null, 2);
-              }
-            });
+    window.addEventListener("message", (event) => {
+      console.log(event.data);
 
-    window.parent.postMessage({type: "getData"}, "*");
+      if (event.data.data && event.data.data.inventory) {
+        const inventory = event.data.data.inventory;
+        const container = document.getElementById("data");
+        container.innerHTML = ""; // clear previous
 
+        // Loop through inventory object
+        Object.entries(inventory).forEach(([name, info]) => {
+          const div = document.createElement("div");
+          div.className = "item";
+          div.innerHTML = `<span>${name}</span>: ${info.amount}`;
+          container.appendChild(div);
+        });
+      }
+    });
+
+    // ask parent for inventory
+    window.parent.postMessage({ type: "getData" }, "*");
   </script>
 </body>
 </html>
