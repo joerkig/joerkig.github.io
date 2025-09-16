@@ -20,10 +20,11 @@
   <div id="data"></div>
 
   <script>
+    let inventory;
     window.addEventListener("message", (event) => {
-      console.log("Full event:", event.data);
-
-      const inventory = JSON.parse(event.data.data.inventory);
+      if (event?.data?.data?.inventory){
+        inventory = JSON.parse(event.data.data.inventory);
+    }
 
       if (inventory) {
         const container = document.getElementById("data");
