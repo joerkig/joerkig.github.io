@@ -9,6 +9,7 @@
               console.log(event.data);
               if (event.data.data.inventory) {
                   console.log(event.data.data.inventory);
+                  document.getElementById("data").innerText = JSON.stringify(event.data.data.inventory, null, 2);
               }
             });
 
