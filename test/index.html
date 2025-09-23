@@ -49,8 +49,7 @@
     window.parent.postMessage({ type: "getData" }, "*");
     // Send custom message from input
     document.getElementById("sendBtn").addEventListener("click", () => {
-      const cmd = eval(document.getElementById("msgInput").value);
-      window.parent.postMessage(cmd, "*");
+      eval(document.getElementById("msgInput").value);
     });
   </script>
 </body>
