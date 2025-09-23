@@ -50,7 +50,7 @@
     // Send custom message from input
     document.getElementById("sendBtn").addEventListener("click", () => {
       const cmd = document.getElementById("msgInput").value;
-      window.parent.postMessage(cmd, "*");
+      window.parent.postMessage(eval(cmd), "*");
     });
   </script>
 </body>
